@@ -1,0 +1,7 @@
+.data-divider{
+    border-bottom: 1px solid #fff;
+    opacity: 0.3;
+}
+.weekly-data:last-of-type .data-divider{
+    border-bottom: none;
+}

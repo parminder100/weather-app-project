@@ -3,6 +3,7 @@ import { useState } from "react";
 import { FetchWeatherApi } from "@/app/Services/FetchWeatherApi/FetchWeatherApi";
 import { useDispatch } from "react-redux";
 import { setWeatherData } from "@/app/Redux/Action";
+import { setWeeklyForecast } from "@/app/Redux/Action";
 import Image from 'next/image'
 import Container from '@mui/material/Container';
 import { useTheme } from '@mui/material/styles';
@@ -26,6 +27,7 @@ const Header = () =>{
         if(event.key === 'Enter'){
             const weather = await FetchWeatherApi(searchCity);
             dispatch(setWeatherData(weather));
+            dispatch(setWeeklyForecast(weather));
             setSearchCity("");
             console.log(weather);
 
@@ -38,7 +40,7 @@ const Header = () =>{
     }
     return(
         <>
-            <header className="p-[10px] flex items-center bg-[#000]">
+            <header className="p-[10px] flex items-center bg-[#000] fixed w-full top-[0px] z-[1]">
                 <Container>
                     <Grid container spacing={2}>
                         <Grid item xs={4}>

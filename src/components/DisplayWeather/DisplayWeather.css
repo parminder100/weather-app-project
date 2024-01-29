@@ -1,0 +1,10 @@
+body{
+    background: linear-gradient(169deg, #2E335A 2.68%, #1C1B33 98.98%);
+    background-repeat: no-repeat;
+}
+.weather-bg{
+    background-image: url("/asset/img/weather_bg.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: auto;
+}
