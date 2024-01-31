@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { FetchWeatherApi } from "@/app/Services/FetchWeatherApi/FetchWeatherApi";
 import { useDispatch } from "react-redux";
-import { setWeatherData } from "@/app/Redux/Action";
+import { setHourlyForecast, setUVIndex, setWeatherData } from "@/app/Redux/Action";
 import { setWeeklyForecast } from "@/app/Redux/Action";
 import Image from 'next/image'
 import Container from '@mui/material/Container';
@@ -28,6 +28,8 @@ const Header = () =>{
             const weather = await FetchWeatherApi(searchCity);
             dispatch(setWeatherData(weather));
             dispatch(setWeeklyForecast(weather));
+            dispatch(setHourlyForecast(weather));
+            dispatch(setUVIndex(weather.uvIndex));
             setSearchCity("");
             console.log(weather);
 
@@ -40,7 +42,7 @@ const Header = () =>{
     }
     return(
         <>
-            <header className="p-[10px] flex items-center bg-[#000] fixed w-full top-[0px] z-[1]">
+            <header className="p-[10px] flex items-center bg-[#000] fixed w-full top-[0px] z-[1000]">
                 <Container>
                     <Grid container spacing={2}>
                         <Grid item xs={4}>

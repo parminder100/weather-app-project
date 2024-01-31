@@ -1,0 +1,70 @@
+.heart {
+  width: 15px;
+  height: 15px;
+  display: block;
+  background-color: rgb(255, 0, 0);
+  transform: translate(-50%, -50%);
+  rotate: -45deg;
+  animation: beat 1s ease-in-out infinite;
+  box-shadow: 0 0 20px red;
+  margin-left: 26px;
+}
+.heart:before,
+.heart:after {
+  content: "";
+  width: 15px;
+  height: 15px;
+  background-color: rgb(255, 0, 0);
+  border-radius: 50%;
+  position: absolute;
+  box-shadow: 0 0 20px red;
+}
+.heart:before {
+  top: -9px;
+  left: 0;
+}
+.heart:after {
+  top: 0;
+  left: 9px;
+}
+
+/* animation */
+
+@keyframes beat {
+  0% {
+    scale: 1;
+  }
+  50% {
+    scale: 1.2;
+  }
+  100% {
+    scale: 1;
+  }
+}
+
+@keyframes auras {
+  0% {
+    box-shadow: 0 0 80px 60px red;
+  }
+  14.285714285714285714285714285714% {
+    box-shadow: 0 0 80px 60px orange;
+  }
+  28.571428571428571428571428571429% {
+    box-shadow: 0 0 80px 60px yellow;
+  }
+  42.857142857142857142857142857143% {
+    box-shadow: 0 0 80px 60px green;
+  }
+  57.142857142857142857142857142857% {
+    box-shadow: 0 0 80px 60px blue;
+  }
+  71.428571428571428571428571428571% {
+    box-shadow: 0 0 80px 60px indigo;
+  }
+  85.714285714285714285714285714286% {
+    box-shadow: 0 0 80px 60px violet;
+  }
+  100% {
+    box-shadow: 0 0 80px 60px red;
+  }
+}

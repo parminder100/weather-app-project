@@ -29,6 +29,8 @@ const WeeklyForecast = () =>{
     const getWeatherImages = (weatherCondition) =>{
         const weatherImage = {
             'Haze': '/asset/img/haze_weather_icon.svg',
+            'Fog': '/asset/img/haze_weather_icon.svg',
+            'Mist': '/asset/img/haze_weather_icon.svg',
             'Smoke': '/asset/img/smoke_weather_icon.svg',
             'Clear':'/asset/img/clear_sky_weather_icon.svg',
             'Clouds':'/asset/img/clouds_weather_icon.svg',
@@ -38,7 +40,7 @@ const WeeklyForecast = () =>{
         return weatherImage[weatherCondition]
     }
 
-    console.log(weeklyForecast.list);
+    console.log(weeklyForecast);
 
     const convertTemperatureKelvinToCelsius = (kelvin) =>{
         return Math.floor(kelvin - 273.15);
