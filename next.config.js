@@ -11,6 +11,13 @@ const nextConfig = {
             'window.jQuery': 'jquery',
           })
         );
+        // config.module.rules.push({
+        //   test: /\.html$/,
+        //   exclude: /node_modules/,
+        //   use: {
+        //     loader: 'html-loader',
+        //   },
+        // });
         if (!isServer) {
           // Prevent Mismatched Versions warning in the browser console.
           config.resolve.alias['@/jQuery'] = 'jquery';

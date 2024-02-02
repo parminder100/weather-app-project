@@ -1,0 +1,26 @@
+body{
+    background-color: #c5c5c5;
+}
+.register_btn{
+    background-image: linear-gradient(to right, #ffa7a7 , #FF014E 40%);
+    padding: 15px;
+    font-size: 15px;
+    color: #fff;
+    width: 100%;
+    border-radius: 8px;
+}
+.username-input{
+    background-image: url("/asset/img/user_icon.svg");
+    background-repeat: no-repeat;
+    background-position: center left 15px;
+}
+.email-input{
+    background-image: url("/asset/img/mail_icon.svg");
+    background-repeat: no-repeat;
+    background-position: center left 15px;
+}
+.password-input{
+    background-image: url("/asset/img/password_icon.svg");
+    background-repeat: no-repeat;
+    background-position: center left 15px;
+}

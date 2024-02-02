@@ -91,21 +91,20 @@ const HourlyForecast = () =>{
                 <OwlCarousel className="owl-theme" {...owlCarouselOptions}>
                     {
                         hourlyForecastData.list && hourlyForecastData.list.map((hourlyForecast,index)=>(
-                            <>
-                                <div key={hourlyForecast.id} className="item border-[1px] border-[#846ae3] rounded-[50px] text-center">
-                                    <div className='p-[10px]'>
-                                        <p>{getFormattedTime(hourlyForecast.dt)}</p>
-                                        <Image
-                                            className='w-full max-w-[50px]'
-                                            width={0}
-                                            height={0}
-                                            src={getWeatherImages(hourlyForecast.weather[0]?.main)}
-                                            alt="weather-icon"    
-                                        />
-                                        <p>{convertTemperatureKelvinToCelsius(hourlyForecast.main.temp)} °C</p>
-                                    </div>
+                            <div key={index} className="item border-[1px] border-[#846ae3] rounded-[50px] text-center">
+                                <div className='p-[10px]'>
+                                    <p>{getFormattedTime(hourlyForecast.dt)}</p>
+                                    <Image
+                                        className='w-full max-w-[50px]'
+                                        width={0}
+                                        height={0}
+                                        src={getWeatherImages(hourlyForecast.weather[0]?.main)}
+                                        alt="weather-icon"
+                                        priority    
+                                    />
+                                    <p>{convertTemperatureKelvinToCelsius(hourlyForecast.main.temp)} °C</p>
                                 </div>
-                            </>
+                            </div>
                         ))
                     }
                 </OwlCarousel>

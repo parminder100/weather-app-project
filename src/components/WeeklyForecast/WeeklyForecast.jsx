@@ -63,23 +63,22 @@ const WeeklyForecast = () =>{
                 <h1 className="text-[#fff] text-[30px] font-[600]">Weekly Forecast</h1>
                 {
                     weeklyForecast.list && weeklyForecast.list.slice(0,7).map((forecast,index)=>(
-                        <>
-                            <div className="weekly-data" key={index}>
-                                <div className="flex flex-row justify-between items-center text-[#fff]">
-                                    <p>{getDayName(index)}</p>
-                                    <Image
-                                        className="w-full max-w-[100px]" 
-                                        src={getWeatherImages(forecast.weather[0]?.main)}
-                                        width={0}
-                                        height={0}
-                                        alt="weather-icon"
-                                    />
-                                    <p>{forecast.weather[0]?.main}</p>
-                                    <p>{convertTemperatureKelvinToCelsius(forecast.main.temp)} °C</p>
-                                </div>
-                                <div className="data-divider"></div>
+                        <div className="weekly-data" key={index}>
+                            <div className="flex flex-row justify-between items-center text-[#fff]">
+                                <p>{getDayName(index)}</p>
+                                <Image
+                                    className="w-full max-w-[100px]" 
+                                    src={getWeatherImages(forecast.weather[0]?.main)}
+                                    width={0}
+                                    height={0}
+                                    alt="weather-icon"
+                                    priority
+                                />
+                                <p>{forecast.weather[0]?.main}</p>
+                                <p>{convertTemperatureKelvinToCelsius(forecast.main.temp)} °C</p>
                             </div>
-                        </>
+                            <div className="data-divider"></div>
+                        </div>
                     ))
                 }
             </div>

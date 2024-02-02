@@ -46,7 +46,7 @@ const Header = () =>{
                 <Container>
                     <Grid container spacing={2}>
                         <Grid item xs={4}>
-                            <Image width={50} height={50} src="/asset/img/registered_logo.png" alt="registered_logo" />
+                            <Image className="w-[50px] h-[50px]" width={0} height={0} src="/asset/img/registered_logo.png" alt="registered_logo" />
                         </Grid>
                         <Grid item xs={8} className="flex items-center justify-end">
                             <ul className="flex flex-row gap-[45px] items-center text-[#fff]"

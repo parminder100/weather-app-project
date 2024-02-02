@@ -1,10 +1,10 @@
 
-import Landing from "./Pages/Landing/Landing";
+import Register from "./Pages/Register/Register";
 
 export default function Home() {
   return (
     <>
-      <Landing />
+      <Register />
     </>
   )
 }
