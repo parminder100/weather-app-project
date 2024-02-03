@@ -5,6 +5,8 @@ import { useEffect, useState } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import Modal from 'bootstrap/js/dist/modal';
+import { signIn } from 'next-auth/react';
+// import { useRouter } from 'next/navigation';
 import "../Register/Register.css";
 
 const Register = () => {
@@ -15,6 +17,7 @@ const Register = () => {
   const [usernameError, setUsernameError] = useState('');
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
+  // const router = useRouter();
 
   const handleUsernameChange = (value) =>{
     setUsername(value);
@@ -82,6 +85,7 @@ const Register = () => {
       return;
     }
 
+    
     try {
       const response = await fetch('/api/registerhandler', {
         method: 'POST',
@@ -90,10 +94,16 @@ const Register = () => {
         },
         body: JSON.stringify({ username, email, password }),
       });
-
+      
       if (response.ok) {
         // Handle successful registration
         console.log('Registration successful');
+        
+        // Signin/Login page
+        setTimeout(async()=>{
+          await signIn( { username, email, password });
+        },[1000]);
+
         setShowModal(true);
         setTimeout(() => {
           setShowModal(false); // Hide the modal after 5 seconds
