@@ -1,17 +1,19 @@
-import Landing from "../Pages/Landing/Landing";
+import Login from "@/components/Login/Login";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import { authOptions } from "../api/auth/[...nextauth]/route";
 
-const Page = async() =>{
+const LoginPage = async() =>{
     const session = await getServerSession(authOptions);
-    if(!session){
-        redirect('/')
+
+    if(session){
+        redirect("/weather");
     }
+
     return(
         <>
-            <Landing />
+            <Login />
         </>
     )
 }
-export default Page;
+export default LoginPage;

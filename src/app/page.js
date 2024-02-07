@@ -1,7 +1,14 @@
+import Register from "../components/Register/Register";
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
+import { authOptions } from "./api/auth/[...nextauth]/route";
 
-import Register from "./Pages/Register/Register";
+export default async function Home() {
+  const session = await getServerSession(authOptions);
 
-export default function Home() {
+  if(session){
+    redirect("/weather");
+  }
   return (
     <>
       <Register />

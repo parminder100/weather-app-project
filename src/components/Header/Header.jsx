@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { signOut } from 'next-auth/react';
 import { FetchWeatherApi } from "@/app/Services/FetchWeatherApi/FetchWeatherApi";
 import { useDispatch } from "react-redux";
 import { setHourlyForecast, setUVIndex, setWeatherData } from "@/app/Redux/Action";
@@ -11,10 +12,15 @@ import Grid from '@mui/material/Grid';
 import '@fortawesome/fontawesome-free/css/all.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 
 const Header = () =>{
     const [searchCity, setSearchCity] = useState("");
     const [showSearchBar, setShowSearchBar] = useState(false);
+    const router = useRouter();
+    const {data:session, status} = useSession();
+    console.log(session);
 
     const theme = useTheme();
     const dispatch = useDispatch();
@@ -40,16 +46,21 @@ const Header = () =>{
     const handleSearchBar = () =>{
         setShowSearchBar(!showSearchBar);
     }
+
+    const handleSignOut = async () => {
+        await signOut({ redirect: false });
+        router.push("/loginpage");
+    }
     return(
         <>
             <header className="p-[10px] flex items-center bg-[#000] fixed w-full top-[0px] z-[1000]">
                 <Container>
                     <Grid container spacing={2}>
-                        <Grid item xs={4}>
+                        <Grid item xs={2}>
                             <Image className="w-[50px] h-[50px]" width={0} height={0} src="/asset/img/registered_logo.png" alt="registered_logo" />
                         </Grid>
-                        <Grid item xs={8} className="flex items-center justify-end">
-                            <ul className="flex flex-row gap-[45px] items-center text-[#fff]"
+                        <Grid item xs={10} className="flex items-center justify-end">
+                            <ul className="flex flex-row gap-[42px] items-center text-[#fff]"
                                 style={{fontFamily: theme.typography.fontFamily}}
                                 >
                                 <li>
@@ -74,6 +85,15 @@ const Header = () =>{
                                 <li>About us</li>
                                 <li>News</li>
                                 <li>Contact us</li>
+                                <li>Welcome, {session?.user?.username}</li>
+                                {/* <li>{session?.user?.email}</li> */}
+                                <li>
+                                    <button onClick={handleSignOut} className="text-[#fff] cursor-pointer bg-[#ff0000] 
+                                        px-[8px] py-[5px] rounded-[8px]"
+                                        >
+                                        Sign Out
+                                    </button>
+                                </li>
                             </ul>
                         </Grid>
                     </Grid>

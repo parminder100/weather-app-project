@@ -77,7 +77,7 @@ const DisplayWeather = () =>{
     return(
         <>
             <Header/>
-            <section className="pt-[100px] pb-[80px]">
+            <section className="display_weather_section pt-[100px] pb-[80px]">
                 <Container>
                     <Grid container spacing={2}>
                         <Grid item xs={6}>

@@ -5,9 +5,10 @@ import { useEffect, useState } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import Modal from 'bootstrap/js/dist/modal';
-import { signIn } from 'next-auth/react';
-// import { useRouter } from 'next/navigation';
-import "../Register/Register.css";
+// import { signIn } from 'next-auth/react';
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import "./Register.css";
 
 const Register = () => {
   const [username, setUsername] = useState('');
@@ -17,7 +18,7 @@ const Register = () => {
   const [usernameError, setUsernameError] = useState('');
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
-  // const router = useRouter();
+  const router = useRouter();
 
   const handleUsernameChange = (value) =>{
     setUsername(value);
@@ -87,7 +88,25 @@ const Register = () => {
 
     
     try {
-      const response = await fetch('/api/registerhandler', {
+      const resUserExists = await fetch("api/userExists", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({username}),
+      });
+
+      const responseData = await resUserExists.json();
+      console.log("Response data from /api/userExists:", responseData);
+
+      const {user} = responseData;
+
+      if(user){
+          setError("User already exists.");
+          return;
+      }
+
+      const response = await fetch('api/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -100,14 +119,15 @@ const Register = () => {
         console.log('Registration successful');
         
         // Signin/Login page
-        setTimeout(async()=>{
-          await signIn( { username, email, password });
-        },[1000]);
+        // setTimeout(async()=>{
+        //   await signIn( { username, email, password });
+        // },[1000]);
 
         setShowModal(true);
         setTimeout(() => {
           setShowModal(false); // Hide the modal after 5 seconds
         }, 1000);
+        router.push("/loginpage");
       } else {
         // Handle registration failure
         const errorData = await response.json();
@@ -181,6 +201,14 @@ const Register = () => {
                   >
                     Register
                   </button>
+                </div>
+                <div className='mt-2 text-center'>
+                  <Link 
+                    className='text-[#000] no-underline'
+                    href={'/loginpage'}
+                    >
+                    Already registered? Log in
+                  </Link>
                 </div>
               </form>
               <div className={`modal fade ${showModal ? 'show' : ''}`} id="registrationModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden={!showModal}>
