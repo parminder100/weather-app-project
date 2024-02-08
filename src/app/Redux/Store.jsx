@@ -6,6 +6,7 @@ const initialState = {
   weeklyForecast: [],
   hourlyForecast:[],
   uvIndex:null,
+  showWeatherDataSkeleton: true,
 };
 
 // Reducer
@@ -24,6 +25,12 @@ const searchedReducer = (state = initialState, action) => {
   else if(action.type === 'SET_UV_INDEX'){
     console.log("Redux State updated:", { ...state, uvIndex: action.payload });
     return{...state, uvIndex:action.payload}
+  }
+  else if(action.type === 'SHOW_WEATHERDATA_SKELETON'){
+    return{...state, showWeatherDataSkeleton:true }
+  }
+  else if(action.type === 'HIDE_WEATHERDATA_SKELETON'){
+    return{...state, showWeatherDataSkeleton:false }
   }
   return state;
 };

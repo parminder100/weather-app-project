@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { FetchWeeklyForecast } from "@/app/Services/FetchWeatherApi/FetchWeatherApi";
-import { setWeeklyForecast } from "@/app/Redux/Action";
+import { hideWeatherDataSkeleton, setWeeklyForecast, showWeatherDataSkeleton } from "@/app/Redux/Action";
 import { useDispatch, useSelector } from "react-redux";
 import Image from 'next/image';
+import WeeklyForecastSkeleton from "../Skeleton/WeeklyForecastSkeleton/WeeklyForecastSkeleton";
 import "../WeeklyForecast/WeeklyForecast.css";
 
 const WeeklyForecast = () =>{
@@ -10,6 +11,8 @@ const WeeklyForecast = () =>{
     const dispatch = useDispatch();
     const weeklyForecast = useSelector((state)=>state.weeklyForecast);
     const city = useSelector((state)=>state.weatherData?.name) || 'Delhi';
+    // Show Skeleton
+    const isShowingWeatherSkeleton = useSelector(state=>state.showWeatherDataSkeleton);
 
     useEffect(()=>{
         const getWeeklyForecast = async()=>{
@@ -17,6 +20,7 @@ const WeeklyForecast = () =>{
                 const data = await FetchWeeklyForecast(city);
                 // setWeeklyForecast(data);
                 dispatch(setWeeklyForecast(data));
+                dispatch(showWeatherDataSkeleton());
                 console.log(data);
             }
             catch(error){
@@ -24,6 +28,11 @@ const WeeklyForecast = () =>{
             }
         }
         getWeeklyForecast();
+
+        // Hide Skeleton
+        setTimeout(()=>{
+            dispatch(hideWeatherDataSkeleton());
+        },3000)
     },[city])
 
     const getWeatherImages = (weatherCondition) =>{
@@ -62,7 +71,12 @@ const WeeklyForecast = () =>{
             <div className="bg-[#40326a] p-[30px] rounded-[24px]">
                 <h1 className="text-[#fff] text-[30px] font-[600]">Weekly Forecast</h1>
                 {
-                    weeklyForecast.list && weeklyForecast.list.slice(0,7).map((forecast,index)=>(
+                    isShowingWeatherSkeleton && (
+                        <WeeklyForecastSkeleton />
+                    )
+                }
+                {
+                    !isShowingWeatherSkeleton && weeklyForecast.list && weeklyForecast.list.slice(0,7).map((forecast,index)=>(
                         <div className="weekly-data" key={index}>
                             <div className="flex flex-row justify-between items-center text-[#fff]">
                                 <p>{getDayName(index)}</p>

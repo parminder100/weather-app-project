@@ -20,4 +20,16 @@ export const setUVIndex = (data) =>(
         type: 'SET_UV_INDEX',
         payload: data,
     }
+);
+
+export const showWeatherDataSkeleton = () =>(
+    {
+        type: 'SHOW_WEATHERDATA_SKELETON'
+    }
+)
+
+export const hideWeatherDataSkeleton = () =>(
+    {
+        type: 'HIDE_WEATHERDATA_SKELETON'
+    }
 )

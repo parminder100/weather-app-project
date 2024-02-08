@@ -1,8 +1,9 @@
 import dynamic from 'next/dynamic';
-import { setHourlyForecast } from "@/app/Redux/Action";
+import { hideWeatherDataSkeleton, setHourlyForecast, showWeatherDataSkeleton } from "@/app/Redux/Action";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { FetchHourlyForecast } from "@/app/Services/FetchWeatherApi/FetchWeatherApi";
+import HourlyForecastSkeleton from '../Skeleton/HourlyForecastSkeleton/HourlyForecastSkeleton';
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
@@ -12,6 +13,7 @@ import "../HourlyForecast/HourlyForecast.css";
 const HourlyForecast = () =>{
     const dispatch = useDispatch();
     const hourlyForecastData = useSelector((state)=>state.hourlyForecast);
+    const isShowingWeatherSkeleton = useSelector(state=>state.showWeatherDataSkeleton);
     const city = useSelector((state)=>state.weatherData?.name) || 'Delhi';
     const OwlCarousel = dynamic(() => import('react-owl-carousel'), { ssr: false });
 
@@ -20,6 +22,7 @@ const HourlyForecast = () =>{
             try{
                 const data = await FetchHourlyForecast(city);
                 dispatch(setHourlyForecast(data));
+                dispatch(showWeatherDataSkeleton());
                 console.log(data);
             }
             catch(error){
@@ -27,6 +30,10 @@ const HourlyForecast = () =>{
             }
         }
         getHourlyForecast();
+
+        setTimeout(()=>{
+            dispatch(hideWeatherDataSkeleton());
+        },[]);
     },[city]);
 
     console.log(hourlyForecastData);
@@ -90,7 +97,12 @@ const HourlyForecast = () =>{
                 <h1 className='text-[30px] text-[#fff] mb-[20px]'>Hourly Forecast</h1>
                 <OwlCarousel className="owl-theme" {...owlCarouselOptions}>
                     {
-                        hourlyForecastData.list && hourlyForecastData.list.map((hourlyForecast,index)=>(
+                        isShowingWeatherSkeleton && (
+                            <HourlyForecastSkeleton />
+                        )
+                    }
+                    {
+                        !isShowingWeatherSkeleton && hourlyForecastData.list && hourlyForecastData.list.map((hourlyForecast,index)=>(
                             <div key={index} className="item border-[1px] border-[#846ae3] rounded-[50px] text-center">
                                 <div className='p-[10px]'>
                                     <p>{getFormattedTime(hourlyForecast.dt)}</p>
