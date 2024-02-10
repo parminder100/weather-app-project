@@ -26,10 +26,17 @@ export const showWeatherDataSkeleton = () =>(
     {
         type: 'SHOW_WEATHERDATA_SKELETON'
     }
-)
+);
 
 export const hideWeatherDataSkeleton = () =>(
     {
         type: 'HIDE_WEATHERDATA_SKELETON'
+    }
+);
+
+export const setNewsData = (data) =>(
+    {
+        type: 'SET_NEWS_DATA',
+        payload: data,
     }
 )

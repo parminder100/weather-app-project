@@ -7,6 +7,7 @@ const initialState = {
   hourlyForecast:[],
   uvIndex:null,
   showWeatherDataSkeleton: true,
+  newsData:null,
 };
 
 // Reducer
@@ -31,6 +32,10 @@ const searchedReducer = (state = initialState, action) => {
   }
   else if(action.type === 'HIDE_WEATHERDATA_SKELETON'){
     return{...state, showWeatherDataSkeleton:false }
+  }
+  else if(action.type === 'SET_NEWS_DATA'){
+    console.log("Redux State updated:", { ...state, newsData: action.payload });
+    return{...state, newsData:action.payload }
   }
   return state;
 };

@@ -14,6 +14,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
+import Link from 'next/link'
 
 const Header = () =>{
     const [searchCity, setSearchCity] = useState("");
@@ -57,7 +58,13 @@ const Header = () =>{
                 <Container>
                     <Grid container spacing={2}>
                         <Grid item xs={2}>
-                            <Image className="w-[50px] h-[50px]" width={0} height={0} src="/asset/img/registered_logo.png" alt="registered_logo" />
+                            <Image className="!w-[50px] h-[50px]" 
+                                width={0} 
+                                height={0} 
+                                src="/asset/img/registered_logo.png" 
+                                alt="registered_logo" 
+                                layout="responsive"
+                            />
                         </Grid>
                         <Grid item xs={10} className="flex items-center justify-end">
                             <ul className="flex flex-row gap-[42px] items-center text-[#fff]"
@@ -81,10 +88,18 @@ const Header = () =>{
                                         />
                                     </div>
                                 </li>
-                                <li>Home</li>
-                                <li>About us</li>
-                                <li>News</li>
-                                <li>Contact us</li>
+                                <li>
+                                    <Link href={'/'} className="text-[#fff] no-underline">Home</Link>
+                                </li>
+                                <li>
+                                    <Link href={'/aboutus'} className="text-[#fff] no-underline">About us</Link>
+                                </li>
+                                <li>
+                                    <Link href={'/news'} className="text-[#fff] no-underline">News</Link>
+                                </li>
+                                <li>
+                                    <Link href={'/contactus'} className="text-[#fff] no-underline">Contact us</Link>
+                                </li>
                                 <li>Welcome, {session?.user?.username}</li>
                                 {/* <li>{session?.user?.email}</li> */}
                                 <li>

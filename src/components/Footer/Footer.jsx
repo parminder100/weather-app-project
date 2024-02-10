@@ -16,9 +16,16 @@ const Footer = () =>{
                             </div>
                         </Grid>
                         <Grid item xs={6} className="flex justify-end">
-                            <a href="https://openweathermap.org" target="_blank">
+                            <a href="https://openweathermap.org" className='text-[#fff] no-underline' target="_blank">
                                 Powered by
-                                <Image className='min-w-[100px]' loading='eager' width={0} height={0} src="/asset/img/openWeather_logo.png" alt="openWeather_logo" />
+                                <Image 
+                                    className='!w-[100px]'
+                                    width={0} 
+                                    height={0} 
+                                    src="/asset/img/openWeather_logo.png" 
+                                    alt="openWeather_logo" 
+                                    layout="responsive"
+                                />
                             </a>
                         </Grid>
                     </Grid>

@@ -2,6 +2,16 @@
 const webpack = require('webpack');
 const nextConfig = {
     reactStrictMode: false,
+    images: {
+      remotePatterns: [
+        {
+          protocol: "https",
+          hostname: "**",
+          port: "",
+          pathname: "**",
+        },
+      ],
+    },
     webpack: (config, { isServer }) => {
         // Use jQuery in both the client and server.
         config.plugins.push(
