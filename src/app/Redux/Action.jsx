@@ -39,4 +39,16 @@ export const setNewsData = (data) =>(
         type: 'SET_NEWS_DATA',
         payload: data,
     }
-)
+);
+
+export const setCountriesData = (data) =>(
+    {
+        type: 'SET_COUNTRIES_DATA',
+        payload: data,
+    }
+);
+
+export const setSelectedCountryWeatherData = (data) => ({
+    type: "SET_SELECTED_COUNTRY_WEATHER_DATA",
+    payload: data,
+});

@@ -8,6 +8,8 @@ const initialState = {
   uvIndex:null,
   showWeatherDataSkeleton: true,
   newsData:null,
+  countriesData: [],
+  selectedCountryWeatherData: [],
 };
 
 // Reducer
@@ -36,6 +38,14 @@ const searchedReducer = (state = initialState, action) => {
   else if(action.type === 'SET_NEWS_DATA'){
     console.log("Redux State updated:", { ...state, newsData: action.payload });
     return{...state, newsData:action.payload }
+  }
+  else if(action.type === 'SET_COUNTRIES_DATA'){
+    console.log("Redux State updated:", { ...state, countriesData: action.payload });
+    return{...state, countriesData:action.payload}
+  }
+  else if (action.type === 'SET_SELECTED_COUNTRY_WEATHER_DATA') {
+    console.log("Redux State updated:", { ...state, selectedCountryWeatherData: action.payload });
+    return { ...state, selectedCountryWeatherData: action.payload }
   }
   return state;
 };

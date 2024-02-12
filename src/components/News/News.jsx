@@ -46,7 +46,7 @@ const News = () =>{
             </Provider>
             <section className="pt-[100px] pb-[30px]">
                 <Container>
-                    <Grid container spacing={2}>
+                    <Grid container spacing={2} className="max-sm:!flex-col">
                         {isShowingWeatherSkeleton && (
                             Array.from({ length: 10 }).map((_, index) => (
                                 <Grid item xs={6} key={index}>
@@ -56,7 +56,7 @@ const News = () =>{
                         )}
                         {
                             !isShowingWeatherSkeleton && weatherNewsData && weatherNewsData.news.map((news, index)=>(
-                                <Grid item xs={6} key={index} className="mb-[20px]">
+                                <Grid item xs={6} key={index} className="mb-[20px] max-sm:max-sm:!max-w-[100%]">
                                     {
                                         news.image ? (
                                             <Image 

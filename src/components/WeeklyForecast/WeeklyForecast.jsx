@@ -69,7 +69,7 @@ const WeeklyForecast = () =>{
     return(
         <>
             <div className="bg-[#40326a] p-[30px] rounded-[24px]">
-                <h1 className="text-[#fff] text-[30px] font-[600]">Weekly Forecast</h1>
+                <h1 className="text-[#fff] text-[30px] font-[600] max-sm:text-[20px]">Weekly Forecast</h1>
                 {
                     isShowingWeatherSkeleton && (
                         <WeeklyForecastSkeleton />
@@ -79,17 +79,17 @@ const WeeklyForecast = () =>{
                     !isShowingWeatherSkeleton && weeklyForecast.list && weeklyForecast.list.slice(0,7).map((forecast,index)=>(
                         <div className="weekly-data" key={index}>
                             <div className="flex flex-row justify-between items-center text-[#fff]">
-                                <p>{getDayName(index)}</p>
+                                <p className="max-md:text-[14px]">{getDayName(index)}</p>
                                 <Image
-                                    className="w-full max-w-[100px]" 
+                                    className="w-full max-w-[100px] max-md:max-w-[50px]" 
                                     src={getWeatherImages(forecast.weather[0]?.main)}
                                     width={0}
                                     height={0}
                                     alt="weather-icon"
                                     priority
                                 />
-                                <p>{forecast.weather[0]?.main}</p>
-                                <p>{convertTemperatureKelvinToCelsius(forecast.main.temp)} °C</p>
+                                <p className="max-md:text-[14px]">{forecast.weather[0]?.main}</p>
+                                <p className="max-md:text-[14px]">{convertTemperatureKelvinToCelsius(forecast.main.temp)} °C</p>
                             </div>
                             <div className="data-divider"></div>
                         </div>

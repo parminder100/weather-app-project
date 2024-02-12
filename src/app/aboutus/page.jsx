@@ -23,8 +23,8 @@ const AboutUs = () =>{
             <Provider store={store}>
                 <Header />
             </Provider>
-            <section className="pt-[70px] pb-[40px] bg-[#fff]">
-                <div className="bg-[url('/asset/img/aboutus.jpg')] h-[300px] w-full relative">
+            <section className="pt-[58px] pb-[40px] bg-[#fff]">
+                <div className="bg-[url('/asset/img/aboutus.jpg')] max-sm:h-[382px] h-[300px] w-full relative">
                     <Container className="absolute top-[30px] flex flex-col items-center">
                         <Grid container spacing={2}>
                             <Grid item xs={12} className="max-w-[1140px] mt-[30px] mx-auto text-center">
@@ -40,8 +40,8 @@ const AboutUs = () =>{
                     </Container>
                 </div>
                 <Container className="mt-[50px]">
-                    <Grid container spacing={2}>
-                        <Grid item xs={6} className="mb-[30px]">
+                    <Grid container spacing={2} className="max-sm:!flex-col">
+                        <Grid item xs={6} className="mb-[30px] max-sm:!max-w-[100%]">
                             <Image className="w-full" 
                                 width={0}
                                 height={0}
@@ -50,7 +50,7 @@ const AboutUs = () =>{
                                 layout="responsive"
                             />
                         </Grid>
-                        <Grid item xs={6} className="mb-[30px]">
+                        <Grid item xs={6} className="mb-[30px] max-sm:!max-w-[100%]">
                             <h2 className="text-[32px] font-[600] mb-[30px]">Our Mission</h2>
                             <p>At Weather24, our mission is to provide individuals, 
                                 businesses, and communities with accurate and timely 
@@ -70,7 +70,7 @@ const AboutUs = () =>{
                                 on reliable weather forecasts.
                             </p>
                         </Grid>
-                        <Grid item xs={6} className="mb-[30px]">
+                        <Grid item xs={6} className="mb-[30px] max-sm:!max-w-[100%]">
                             <h2 className="text-[32px] font-[600] mb-[30px]">Our Vision</h2>
                             <p>Our vision for Weather24 is to be the leading provider of weather 
                                 information globally, serving as a trusted source for accurate 
@@ -88,7 +88,7 @@ const AboutUs = () =>{
                                 from the latest innovations in weather forecasting.
                             </p>
                         </Grid>
-                        <Grid item xs={6} className="mb-[30px]">
+                        <Grid item xs={6} className="mb-[30px] max-sm:!max-w-[100%]">
                             <Image
                                 className="w-full"
                                 src="/asset/img/ourvision.jpg"
@@ -98,7 +98,7 @@ const AboutUs = () =>{
                                 layout="responsive"
                              />
                         </Grid>
-                        <Grid item xs={6}>
+                        <Grid item xs={6} className="max-sm:!max-w-[100%] max-sm:order-1">
                             <Image
                                 className="w-full !h-[350px] object-cover"
                                 src="/asset/img/ourcorevalues.jpg"
@@ -108,7 +108,7 @@ const AboutUs = () =>{
                                 layout="responsive"
                              />
                         </Grid>
-                        <Grid item xs={6}>
+                        <Grid item xs={6} className="max-sm:!max-w-[100%]">
                             <h2 className="text-[32px] font-[600] mb-[30px]">Our Core Values</h2>
                             <p>We understand the importance of dependability 
                                 when it comes to weather forecasts. Our team 

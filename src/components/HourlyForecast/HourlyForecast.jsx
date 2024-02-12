@@ -88,7 +88,15 @@ const HourlyForecast = () =>{
         autoplayTimeout: 3000,
         autoplayHoverPause: true,
         responsive: {
-            // Add responsive configurations if needed
+            0: {
+                items: 5, // Display 1 item on smaller screens
+            },
+            600: {
+                items: 3, // Display 3 items on screens between 600px and 900px
+            },
+            900: {
+                items: 5, // Display 5 items on screens larger than 900px
+            }
         },
     };
     return(

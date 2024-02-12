@@ -91,8 +91,8 @@ const DisplayWeather = () =>{
             <Header/>
             <section className="display_weather_section pt-[100px] pb-[80px]">
                 <Container>
-                    <Grid container spacing={2}>
-                        <Grid item xs={6}>
+                    <Grid container spacing={2} className="max-sm:!flex-col">
+                        <Grid item xs={6} className="w-full max-sm:!max-w-[100%]">
                             {
                                 defaultWeatherData && (
                                     <>
@@ -103,17 +103,17 @@ const DisplayWeather = () =>{
                                     }
                                     {
                                         defaultWeatherData && !isShowingWeatherSkeleton && (
-                                            <div className="weather-bg w-full pb-[24px] mb-[30px]">
-                                                <div className="flex flex-row gap-[50px] justify-between items-start">
+                                            <div className="weather-bg w-full pb-[24px] mb-[30px] max-lg:min-w-[252px]">
+                                                <div className="flex flex-row gap-[50px] justify-between items-start max-md:gap-[11px]">
                                                     <div className="ml-[30px] pt-[40px]">
-                                                        <p className="text-[#fff] font-[500] text-[100px]">{convertTemperatureKelvinToCelsius(defaultWeatherData.main.temp)} °C</p>
+                                                        <p className="text-[#fff] font-[500] text-[100px] max-md:text-[24px] max-xl:text-[45px]">{convertTemperatureKelvinToCelsius(defaultWeatherData.main.temp)} °C</p>
                                                         <div className="flex flex-row items-center gap-[20px]">
-                                                            <p className="text-[25px] text-[#EBEBF5] opacity-[0.6]">H:{convertTemperatureKelvinToCelsius(defaultWeatherData.main.temp_max)} °C</p>
-                                                            <p className="text-[25px] text-[#EBEBF5] opacity-[0.6]">L:{convertTemperatureKelvinToCelsius(defaultWeatherData.main.temp_min)} °C</p>
+                                                            <p className="text-[25px] max-md:text-[13px] text-[#EBEBF5] opacity-[0.6]">H:{convertTemperatureKelvinToCelsius(defaultWeatherData.main.temp_max)} °C</p>
+                                                            <p className="text-[25px] max-md:text-[13px] text-[#EBEBF5] opacity-[0.6]">L:{convertTemperatureKelvinToCelsius(defaultWeatherData.main.temp_min)} °C</p>
                                                         </div>
                                                     </div>
                                                     <div>
-                                                        <Image className="w-full min-w-[200px]"
+                                                        <Image className="w-full min-w-[200px] max-md:min-w-[100px]"
                                                             width={0}
                                                             height={0}
                                                             src={getWeatherImages(defaultWeatherData.weather[0]?.main)}
@@ -137,12 +137,12 @@ const DisplayWeather = () =>{
                                         {
                                             defaultWeatherData && !isShowingWeatherSkeleton && (
                                                 <Grid item xs={6}>
-                                                    <div className="bg-[#37265e] border-[1px] border-[#5d47a1] rounded-[20px] p-[20px]">
-                                                        <div className="flex flex-row gap-[10px] items-center mb-[10px]">
+                                                    <div className="bg-[#37265e] border-[1px] border-[#5d47a1] max-sm:p-[10px] rounded-[20px] p-[20px]">
+                                                        <div className="flex flex-row gap-[10px] max-sm:gap-[10px] items-center mb-[10px]">
                                                             <FontAwesomeIcon icon={faWind} className="text-[#9d91b5]" />
-                                                            <h1 className="text-[#9d91b5] text-[18px] font-[600]">Wind</h1>
+                                                            <h1 className="text-[#9d91b5] text-[18px] max-sm:text-[14px] max-md:text-[15px] font-[600]">Wind</h1>
                                                         </div>
-                                                        <p className="text-[30px] text-[#fff]">{Math.floor(defaultWeatherData.wind.speed)} Km/h</p>
+                                                        <p className="text-[30px] text-[#fff] max-sm:text-[16px] max-md:text-[25px]">{Math.floor(defaultWeatherData.wind.speed)} Km/h</p>
                                                     </div>
                                                 </Grid>
                                             )
@@ -155,13 +155,13 @@ const DisplayWeather = () =>{
                                         {
                                             defaultWeatherData && !isShowingWeatherSkeleton && (
                                                 <Grid item xs={6}>
-                                                    <div className="bg-[#37265e] border-[1px] border-[#5d47a1] rounded-[20px] p-[20px]">
-                                                        <div className="flex flex-row gap-[20px] items-center mb-[10px]">
+                                                    <div className="bg-[#37265e] border-[1px] border-[#5d47a1] max-sm:p-[10px] rounded-[20px] p-[20px]">
+                                                        <div className="flex flex-row gap-[20px] max-sm:gap-[18px] items-center mb-[10px]">
                                                             <FontAwesomeIcon icon={faWater} className="text-[#9d91b5]" />
                                                             <FontAwesomeIcon icon={faTint} className="text-[#9d91b5] ml-[-27px] mt-[5px]" />
-                                                            <h1 className="text-[#9d91b5] text-[18px] ml-[-8px] font-[600]">Humidity</h1>
+                                                            <h1 className="text-[#9d91b5] text-[18px] ml-[-8px] max-sm:text-[14px] max-md:text-[15px] font-[600]">Humidity</h1>
                                                         </div>
-                                                        <p className="text-[30px] text-[#fff]">{Math.floor(defaultWeatherData.main.humidity)} %</p>
+                                                        <p className="text-[30px] text-[#fff] max-sm:text-[16px] max-md:text-[25px]">{Math.floor(defaultWeatherData.main.humidity)} %</p>
                                                     </div>
                                                 </Grid>
                                             )
@@ -175,12 +175,12 @@ const DisplayWeather = () =>{
                                             defaultWeatherData && !isShowingWeatherSkeleton && (
                                                 <Grid item xs={6}>
                                                     {uvIndexData && (
-                                                        <div className="bg-[#37265e] border-[1px] border-[#5d47a1] rounded-[20px] p-[20px]">
-                                                            <div className="flex flex-row gap-[20px] items-center mb-[10px]">
+                                                        <div className="bg-[#37265e] border-[1px] max-sm:p-[10px] border-[#5d47a1] rounded-[20px] p-[20px]">
+                                                            <div className="flex flex-row gap-[20px] max-sm:gap-[10px] items-center mb-[10px]">
                                                                 <FontAwesomeIcon icon={faSun} className="text-[#9d91b5]" />
-                                                                <h1 className="text-[#9d91b5] text-[18px] font-[600]">UV Index</h1>
+                                                                <h1 className="text-[#9d91b5] text-[18px] max-sm:text-[14px] font-[600] max-md:text-[15px]">UV Index</h1>
                                                             </div>
-                                                            <p className="text-[30px] text-[#fff]">{uvIndexData}</p>
+                                                            <p className="text-[30px] text-[#fff] max-sm:text-[16px] max-md:text-[25px]">{uvIndexData}</p>
                                                         </div>
                                                     )}
                                                 </Grid>
@@ -194,12 +194,12 @@ const DisplayWeather = () =>{
                                         {
                                             defaultWeatherData && !isShowingWeatherSkeleton && (
                                                 <Grid item xs={6}>
-                                                    <div className="bg-[#37265e] border-[1px] border-[#5d47a1] rounded-[20px] p-[20px]">
-                                                        <div className="flex flex-row gap-[20px] items-center mb-[10px]">
+                                                    <div className="bg-[#37265e] border-[1px] border-[#5d47a1] max-sm:p-[10px] rounded-[20px] p-[20px]">
+                                                        <div className="flex flex-row gap-[20px] max-sm:gap-[10px] items-center mb-[10px]">
                                                             <FontAwesomeIcon icon={faTemperatureLow} className="text-[#9d91b5]" />
-                                                            <h1 className="text-[#9d91b5] text-[18px] font-[600]">Feels Like</h1>
+                                                            <h1 className="text-[#9d91b5] text-[18px] font-[600] max-sm:text-[14px] max-md:text-[15px]">Feels Like</h1>
                                                         </div>
-                                                        <p className="text-[30px] text-[#fff]">{defaultWeatherData.main.feels_like}</p>
+                                                        <p className="text-[30px] text-[#fff] max-sm:text-[16px] max-md:text-[25px]">{defaultWeatherData.main.feels_like}</p>
                                                     </div>
                                                 </Grid>
                                             )
@@ -210,7 +210,7 @@ const DisplayWeather = () =>{
                             }
                             <HourlyForecast />
                         </Grid>
-                        <Grid item xs={6}>
+                        <Grid item xs={6} className="max-sm:!max-w-[100%]">
                             <WeeklyForecast />
                         </Grid>
                     </Grid>
