@@ -1,5 +1,6 @@
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
+import openWeather_logo from "../../../public/asset/img/openWeather_logo.png";
 import Image from 'next/image';
 import "../Footer/Footer.css"
 
@@ -22,9 +23,8 @@ const Footer = () =>{
                                     className='!w-[100px]'
                                     width={0} 
                                     height={0} 
-                                    src="/asset/img/openWeather_logo.png" 
-                                    alt="openWeather_logo" 
-                                    layout="responsive"
+                                    src={openWeather_logo}
+                                    alt="openWeather_logo"
                                 />
                             </a>
                         </Grid>

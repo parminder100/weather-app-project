@@ -1,4 +1,10 @@
 import { useState, useEffect } from "react";
+import haze_weather_icon from "../../../public/asset/img/haze_weather_icon.svg";
+import smoke_weather_icon from "../../../public/asset/img/smoke_weather_icon.svg";
+import clear_sky_weather_icon from "../../../public/asset/img/clear_sky_weather_icon.svg";
+import clouds_weather_icon from "../../../public/asset/img/clouds_weather_icon.svg";
+import rain_weather_icon from "../../../public/asset/img/rain_weather_icon.svg";
+import snow_weather_icon from "../../../public/asset/img/snow_weather_icon.svg";
 import { FetchWeeklyForecast } from "@/app/Services/FetchWeatherApi/FetchWeatherApi";
 import { hideWeatherDataSkeleton, setWeeklyForecast, showWeatherDataSkeleton } from "@/app/Redux/Action";
 import { useDispatch, useSelector } from "react-redux";
@@ -21,7 +27,7 @@ const WeeklyForecast = () =>{
                 // setWeeklyForecast(data);
                 dispatch(setWeeklyForecast(data));
                 dispatch(showWeatherDataSkeleton());
-                console.log(data);
+                // console.log(data);
             }
             catch(error){
                 console.error('Error fetching weekly data', error);
@@ -37,19 +43,19 @@ const WeeklyForecast = () =>{
 
     const getWeatherImages = (weatherCondition) =>{
         const weatherImage = {
-            'Haze': '/asset/img/haze_weather_icon.svg',
-            'Fog': '/asset/img/haze_weather_icon.svg',
-            'Mist': '/asset/img/haze_weather_icon.svg',
-            'Smoke': '/asset/img/smoke_weather_icon.svg',
-            'Clear':'/asset/img/clear_sky_weather_icon.svg',
-            'Clouds':'/asset/img/clouds_weather_icon.svg',
-            'Rain':'/asset/img/rain_weather_icon.svg',
-            'Snow': '/asset/img/snow_weather_icon.svg',
+            'Haze': haze_weather_icon,
+            'Fog': haze_weather_icon,
+            'Mist': haze_weather_icon,
+            'Smoke': smoke_weather_icon ,
+            'Clear':clear_sky_weather_icon,
+            'Clouds':clouds_weather_icon,
+            'Rain':rain_weather_icon,
+            'Snow': snow_weather_icon,
         }
         return weatherImage[weatherCondition]
     }
 
-    console.log(weeklyForecast);
+    // console.log(weeklyForecast);
 
     const convertTemperatureKelvinToCelsius = (kelvin) =>{
         return Math.floor(kelvin - 273.15);
@@ -62,7 +68,7 @@ const WeeklyForecast = () =>{
 
         const today =  new Date();
         today.setDate(today.getDate() + index);
-        console.log(today);
+        // console.log(today);
 
         return today.toLocaleDateString('en-Us',{weekday: 'long'});
     } 

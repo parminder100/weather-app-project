@@ -3,6 +3,12 @@ import { FetchUvIndex, FetchWeatherApi } from "../../app/Services/FetchWeatherAp
 import { hideWeatherDataSkeleton, setUVIndex, setWeatherData, showWeatherDataSkeleton } from "@/app/Redux/Action";
 import { useDispatch, useSelector } from "react-redux";
 import Container from '@mui/material/Container';
+import haze_weather_icon from "../../../public/asset/img/haze_weather_icon.svg";
+import smoke_weather_icon from "../../../public/asset/img/smoke_weather_icon.svg";
+import clear_sky_weather_icon from "../../../public/asset/img/clear_sky_weather_icon.svg";
+import clouds_weather_icon from "../../../public/asset/img/clouds_weather_icon.svg";
+import rain_weather_icon from "../../../public/asset/img/rain_weather_icon.svg";
+import snow_weather_icon from "../../../public/asset/img/snow_weather_icon.svg";
 import Grid from '@mui/material/Grid';
 import "../DisplayWeather/DisplayWeather.css";
 import Image from 'next/image';
@@ -39,13 +45,13 @@ const DisplayWeather = () =>{
     if (!defaultWeatherData) {
         fetchDefaultWeather();
     }
-    console.log(defaultWeatherData);
+    // console.log(defaultWeatherData);
 
     const fetchuv = async() =>{
         try{
             if(defaultWeatherData && defaultWeatherData.coord){
                 const uvindex = await FetchUvIndex(defaultWeatherData.coord.lat, defaultWeatherData.coord.lon);
-                console.log("UV Index response:", uvindex);
+                // console.log("UV Index response:", uvindex);
                 dispatch(setUVIndex(uvindex.value));
             }
         }
@@ -65,7 +71,7 @@ const DisplayWeather = () =>{
         },3000);
     },[]);
 
-    console.log(uvIndexData);
+    // console.log(uvIndexData);
 
     // Convert temperature from kelvin to celsius
     const convertTemperatureKelvinToCelsius = (kelvin) =>{
@@ -75,21 +81,23 @@ const DisplayWeather = () =>{
     // Get local weather images based on weather
     const getWeatherImages = (weatherCondition) =>{
         const weatherImages = {
-            'Haze': '/asset/img/haze_weather_icon.svg',
-            'Fog': '/asset/img/haze_weather_icon.svg',
-            'Mist': '/asset/img/haze_weather_icon.svg',
-            'Smoke': '/asset/img/smoke_weather_icon.svg',
-            'Clear':'/asset/img/clear_sky_weather_icon.svg',
-            'Clouds':'/asset/img/clouds_weather_icon.svg',
-            'Rain':'/asset/img/rain_weather_icon.svg',
-            'Snow': '/asset/img/snow_weather_icon.svg',
+            'Haze': haze_weather_icon,
+            'Fog': haze_weather_icon,
+            'Mist': haze_weather_icon,
+            'Smoke': smoke_weather_icon ,
+            'Clear':clear_sky_weather_icon,
+            'Clouds':clouds_weather_icon,
+            'Rain':rain_weather_icon,
+            'Snow': snow_weather_icon,
         }
         return weatherImages[weatherCondition];
     }
     return(
         <>
             <Header/>
-            <section className="display_weather_section pt-[100px] pb-[80px]">
+            <section 
+                className="display_weather_section pt-[100px] pb-[80px]"
+                >
                 <Container>
                     <Grid container spacing={2} className="max-sm:!flex-col">
                         <Grid item xs={6} className="w-full max-sm:!max-w-[100%]">

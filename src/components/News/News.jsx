@@ -25,7 +25,7 @@ const News = () =>{
                 setTimeout(() => {
                     dispatch(hideWeatherDataSkeleton());
                 }, 3000);
-                console.log(weatherNews);
+                // console.log(weatherNews);
             }
             catch(error){
                 console.error("Error fetching weather news:", error);
@@ -38,7 +38,7 @@ const News = () =>{
     },[weatherNewsData]);
 
 
-    console.log(weatherNewsData);
+    // console.log(weatherNewsData);
     return(
         <>
             <Provider store={store}>

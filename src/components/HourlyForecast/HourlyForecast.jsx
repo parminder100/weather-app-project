@@ -1,4 +1,10 @@
 import dynamic from 'next/dynamic';
+import haze_weather_icon from "../../../public/asset/img/haze_weather_icon.svg";
+import smoke_weather_icon from "../../../public/asset/img/smoke_weather_icon.svg";
+import clear_sky_weather_icon from "../../../public/asset/img/clear_sky_weather_icon.svg";
+import clouds_weather_icon from "../../../public/asset/img/clouds_weather_icon.svg";
+import rain_weather_icon from "../../../public/asset/img/rain_weather_icon.svg";
+import snow_weather_icon from "../../../public/asset/img/snow_weather_icon.svg";
 import { hideWeatherDataSkeleton, setHourlyForecast, showWeatherDataSkeleton } from "@/app/Redux/Action";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -23,7 +29,7 @@ const HourlyForecast = () =>{
                 const data = await FetchHourlyForecast(city);
                 dispatch(setHourlyForecast(data));
                 dispatch(showWeatherDataSkeleton());
-                console.log(data);
+                // console.log(data);
             }
             catch(error){
                 console.error('Error fetching hourly forecast', error);
@@ -36,7 +42,7 @@ const HourlyForecast = () =>{
         },[]);
     },[city]);
 
-    console.log(hourlyForecastData);
+    // console.log(hourlyForecastData);
 
     const convertTemperatureKelvinToCelsius = (kelvin) =>{
         return Math.floor(kelvin - 273.15);
@@ -56,14 +62,14 @@ const HourlyForecast = () =>{
 
     const getWeatherImages = (weatherCondition) =>{
         const weatherImage = {
-            'Haze': '/asset/img/haze_weather_icon.svg',
-            'Fog': '/asset/img/haze_weather_icon.svg',
-            'Mist': '/asset/img/haze_weather_icon.svg',
-            'Smoke': '/asset/img/smoke_weather_icon.svg',
-            'Clear':'/asset/img/clear_sky_weather_icon.svg',
-            'Clouds':'/asset/img/clouds_weather_icon.svg',
-            'Rain':'/asset/img/rain_weather_icon.svg',
-            'Snow': '/asset/img/snow_weather_icon.svg',
+            'Haze': haze_weather_icon,
+            'Fog': haze_weather_icon,
+            'Mist': haze_weather_icon,
+            'Smoke': smoke_weather_icon ,
+            'Clear':clear_sky_weather_icon,
+            'Clouds':clouds_weather_icon,
+            'Rain':rain_weather_icon,
+            'Snow': snow_weather_icon,
         }
         return weatherImage[weatherCondition];
     }
@@ -120,7 +126,7 @@ const HourlyForecast = () =>{
                                         height={0}
                                         src={getWeatherImages(hourlyForecast.weather[0]?.main)}
                                         alt="weather-icon"
-                                        priority    
+                                        priority
                                     />
                                     <p>{convertTemperatureKelvinToCelsius(hourlyForecast.main.temp)} °C</p>
                                 </div>

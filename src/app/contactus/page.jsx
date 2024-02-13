@@ -1,6 +1,8 @@
 "use client";
 import Header from "@/components/Header/Header";
 import { useEffect } from "react";
+import contactus1 from "../../../public/asset/img/contactus1.png";
+import contactus2 from "../../../public/asset/img/contactus2.png";
 import { Provider } from "react-redux";
 import store from "../Redux/Store";
 import Container from '@mui/material/Container';
@@ -28,7 +30,7 @@ const ContactUs = () =>{
             <Provider store={store}>
                 <Header />
             </Provider>
-            <secion className="pt-[70px] mb-[70px] !bg-[#352E64]">
+            <section className="pt-[70px] pb-[70px] !bg-[#352E64]">
                 <Container>
                     <Grid container spacing={2} className="max-sm:!flex-col">
                         <Grid item xs={6} className="max-sm:!max-w-[100%]">
@@ -49,20 +51,18 @@ const ContactUs = () =>{
                                         <p>132 Dartmouth Street Boston,<br /> Massachusetts 02156 United States</p>
                                     </div>
                                     <Image
-                                        src="/asset/img/contactus1.png"
+                                        src={contactus1}
                                         alt="contactus1"
                                         width={0}
                                         height={0}
                                         className="!w-[180px] h-[183px] absolute right-[0px] bottom-[0px]"
-                                        layout="responsive"
                                      />
                                      <Image
-                                        src="/asset/img/contactus2.png"
+                                        src={contactus2}
                                         alt="contactus2"
                                         width={0}
                                         height={0}
                                         className="!w-[138px] h-[138px] absolute right-[84px] bottom-[46px]"
-                                        layout="responsive"
                                      />
                                 </div>
                             </div>
@@ -110,7 +110,7 @@ const ContactUs = () =>{
                         </Grid>
                     </Grid>
                 </Container>
-            </secion>
+            </section>
             <Footer />
         </>
     )

@@ -1,6 +1,9 @@
 "use client";
 import Header from "@/components/Header/Header";
 import { Provider } from "react-redux";
+import ourmission from "../../../public/asset/img/ourmission.jpg";
+import ourvision from "../../../public/asset/img/ourvision.jpg";
+import ourcorevalues from "../../../public/asset/img/ourcorevalues.jpg";
 import { useEffect } from "react";
 import store from "../Redux/Store";
 import Image from 'next/image';
@@ -23,8 +26,8 @@ const AboutUs = () =>{
             <Provider store={store}>
                 <Header />
             </Provider>
-            <section className="pt-[58px] pb-[40px] bg-[#fff]">
-                <div className="bg-[url('/asset/img/aboutus.jpg')] max-sm:h-[382px] h-[300px] w-full relative">
+            <section className="pt-[50px] pb-[40px] bg-[#fff]">
+                <div className="bg-[url('/weather360/asset/img/aboutus.jpg')] max-sm:h-[382px] h-[300px] w-full relative">
                     <Container className="absolute top-[30px] flex flex-col items-center">
                         <Grid container spacing={2}>
                             <Grid item xs={12} className="max-w-[1140px] mt-[30px] mx-auto text-center">
@@ -45,9 +48,8 @@ const AboutUs = () =>{
                             <Image className="w-full" 
                                 width={0}
                                 height={0}
-                                src="/asset/img/ourmission.jpg" 
-                                alt="our-mission" 
-                                layout="responsive"
+                                src={ourmission} 
+                                alt="our-mission"
                             />
                         </Grid>
                         <Grid item xs={6} className="mb-[30px] max-sm:!max-w-[100%]">
@@ -91,21 +93,19 @@ const AboutUs = () =>{
                         <Grid item xs={6} className="mb-[30px] max-sm:!max-w-[100%]">
                             <Image
                                 className="w-full"
-                                src="/asset/img/ourvision.jpg"
+                                src={ourvision}
                                 alt="our-vision"
                                 width={0}
                                 height={0}
-                                layout="responsive"
                              />
                         </Grid>
                         <Grid item xs={6} className="max-sm:!max-w-[100%] max-sm:order-1">
                             <Image
                                 className="w-full !h-[350px] object-cover"
-                                src="/asset/img/ourcorevalues.jpg"
+                                src={ourcorevalues}
                                 alt="our-core-values"
                                 width={0}
                                 height={0}
-                                layout="responsive"
                              />
                         </Grid>
                         <Grid item xs={6} className="max-sm:!max-w-[100%]">

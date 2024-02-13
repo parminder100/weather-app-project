@@ -27,7 +27,7 @@ const Login = () =>{
                 setError('Invalid Credentials');
                 return;
             }
-            router.replace("weather");
+            router.replace("/weather");
         }
         catch(error){
             console.log(error);
