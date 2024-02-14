@@ -88,7 +88,7 @@ const Register = () => {
 
     
     try {
-      const resUserExists = await fetch("weather360/api/userExists", {
+      const resUserExists = await fetch("api/userExists", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -106,7 +106,7 @@ const Register = () => {
           return;
       }
 
-      const response = await fetch('weather360/api/register', {
+      const response = await fetch('api/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

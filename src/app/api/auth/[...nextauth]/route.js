@@ -33,7 +33,7 @@ export const authOptions = {
             },
         }),
     ],
-    basePath: '/weather360',
+    // basePath: '/weather360',
     callbacks: {
         async jwt({ token, user }) {
             console.log(token, user);
@@ -63,7 +63,7 @@ export const authOptions = {
     },
     secret: process.env.NEXTAUTH_SECRET,
     pages: {
-        signIn: '/weather360/loginpage',
+        signIn: '/loginpage',
     },
 };
 

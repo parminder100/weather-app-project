@@ -2,7 +2,7 @@
 const webpack = require('webpack');
 const nextConfig = {
     reactStrictMode: false,
-    basePath: '/weather360',
+    // basePath: '/weather360',
     images: {
       remotePatterns: [
         {

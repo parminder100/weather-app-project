@@ -10,12 +10,12 @@ body{
     border-radius: 8px;
 }
 .username-input{
-    background-image: url("/weather360/asset/img/user_icon.svg");
+    background-image: url("/asset/img/user_icon.svg");
     background-repeat: no-repeat;
     background-position: center left 15px;
 }
 .password-input{
-    background-image: url("/weather360/asset/img/password_icon.svg");
+    background-image: url("/asset/img/password_icon.svg");
     background-repeat: no-repeat;
     background-position: center left 15px;
 }

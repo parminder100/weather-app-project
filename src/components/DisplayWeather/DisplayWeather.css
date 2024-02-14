@@ -3,7 +3,7 @@
     background-repeat: no-repeat;
 }
 .weather-bg{
-    background-image: url("/weather360/asset/img/weather_bg.svg");
+    background-image: url("/asset/img/weather_bg.svg");
     background-repeat: no-repeat;
     background-size: cover;
     height: auto;
