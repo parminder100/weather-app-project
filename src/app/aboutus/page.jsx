@@ -66,7 +66,7 @@ const AboutUs = () =>{
                             <p>
                                 Through our mission, we aim to empower our users by equipping them 
                                 with the knowledge they need to navigate weather conditions with 
-                                confidence. Whether it's planning a weekend getaway, organizing 
+                                confidence. Whether it is planning a weekend getaway, organizing 
                                 outdoor events, or managing day-to-day operations, we are committed 
                                 to helping individuals and organizations make informed choices based 
                                 on reliable weather forecasts.
@@ -115,7 +115,7 @@ const AboutUs = () =>{
                                 of meteorologists and data scientists works 
                                 diligently to ensure that our users can rely 
                                 on our services to make crucial decisions, 
-                                whether it's planning outdoor activities, 
+                                whether it is planning outdoor activities, 
                                 managing agricultural operations, or optimizing 
                                 logistics.
                             </p>

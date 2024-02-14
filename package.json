@@ -1,4 +1,5 @@
 {
+  "homepage": "weather360",
   "name": "weather-app-project",
   "version": "0.1.0",
   "private": true,

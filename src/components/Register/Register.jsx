@@ -148,7 +148,7 @@ const Register = () => {
           <Grid item xs={12} className="flex items-center justify-center !pt-[150px]">
             <div className='bg-[#fff] p-[20px] w-full max-w-[400px] border-[1px] border-[#fff] rounded-[8px]'>
               <form>
-                <h1 className='text-[27px] mb-[30px] font-[600] text-center'>Let's go!</h1>
+                <h1 className='text-[27px] mb-[30px] font-[600] text-center'>Let&apos;s go!</h1>
                 <div className='mb-[10px]'>
                   <label className='block mb-[10px] text-[14px]'>Username:</label>
                   <input type="text" 

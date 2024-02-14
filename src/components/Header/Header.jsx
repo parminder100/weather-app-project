@@ -156,6 +156,7 @@ const Header = () =>{
             }
         }
         fetchCountryData();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 
     useEffect(()=>{
@@ -171,6 +172,7 @@ const Header = () =>{
             }
         }
         fetchCountryMobileData();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 
     const handleCountryClick = async (country) => {

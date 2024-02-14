@@ -40,6 +40,7 @@ const HourlyForecast = () =>{
         setTimeout(()=>{
             dispatch(hideWeatherDataSkeleton());
         },[]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[city]);
 
     // console.log(hourlyForecastData);

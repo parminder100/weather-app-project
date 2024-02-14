@@ -70,7 +70,7 @@ const Login = () =>{
                                     </div>
                                     <div className='mt-2 text-center'>
                                         <Link className="text-[#000] no-underline" href={'/'}>
-                                            Don't have an account? <span className="underline">Register</span>
+                                            Don&apos;t have an account? <span className="underline">Register</span>
                                         </Link>
                                     </div>
                                     {

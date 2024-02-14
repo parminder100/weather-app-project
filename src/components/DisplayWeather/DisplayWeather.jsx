@@ -59,9 +59,9 @@ const DisplayWeather = () =>{
             console.error('Error fetching uv index', error);
         }
     }
-
     useEffect(()=>{
         fetchuv();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[uvIndexData,fetchuv]);
 
     // Hide Skeleton
@@ -69,6 +69,7 @@ const DisplayWeather = () =>{
         setTimeout(()=>{
             dispatch(hideWeatherDataSkeleton());
         },3000);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 
     // console.log(uvIndexData);

@@ -35,6 +35,7 @@ const News = () =>{
             dispatch(showWeatherDataSkeleton());
             fetchWeatherNews();
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[weatherNewsData]);
 
 

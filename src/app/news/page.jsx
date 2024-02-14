@@ -6,7 +6,7 @@ import { useSession } from 'next-auth/react';
 import { redirect } from "next/navigation";
 import { useEffect } from "react";
 
-const newsPage = () =>{
+const   NewsPage = () =>{
     const { data: session, status } = useSession();
     
     useEffect(()=>{
@@ -22,4 +22,4 @@ const newsPage = () =>{
         </>
     )
 }
-export default newsPage;
+export default NewsPage;
